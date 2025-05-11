@@ -2,10 +2,10 @@
 import connectDB from "@/config/database"
 import Property from "@/models/Property"
 import { getSessionUser } from "@/utils/getSessionUser"
-import { connect } from "mongoose"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 import cloudinary from "@/config/cloudinary"
+import Spinner from "@/components/Spinner"
 
 
 async function addProperty(formData) {
@@ -35,12 +35,16 @@ async function addProperty(formData) {
             state: formData.get('location.state'),
             zipcode: formData.get('location.zipcode'),
         },
+        coords: {
+            latitude: formData.get('location.latitude'),
+            longitude: formData.get('location.longitude'),
+        },
         beds: formData.get('beds'),
         baths: formData.get('baths'),
         square_feet: formData.get('square_feet'),
         amenities,
         rates: {
-            // nightly: formData.get('rates.nightly'),
+            hourly: formData.get('rates.hourly'),
             nightly: formData.get('rates.nightly'),
             weekly: formData.get('rates.weekly'),
             monthly: formData.get('rates.monthly'),

@@ -1,6 +1,40 @@
+'use client'
+
 import addProperty from "@/app/actions/addProperty"
+import { useState } from "react";
 
 const PropertyAddForm = () => {
+  const [useCurrentLocation, setUseCurrentLocation] = useState(false);
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+
+  const handleLocationChange = () => {
+    setUseCurrentLocation(!useCurrentLocation);
+    if (!useCurrentLocation) {
+      getCurrentLocation();
+    } else {
+      setLatitude("");
+      setLongitude("");
+    }
+  };
+
+  const getCurrentLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLatitude(position.coords.latitude);
+          setLongitude(position.coords.longitude);
+          // console.log(position.coords.latitude, position.coords.longitude)
+        },
+        (error) => {
+          // console.log("error", error)
+        }
+      );
+    } 
+    
+  };
+
+
   return (
     <form action={addProperty}>
             <h2 className="text-3xl text-center font-semibold mb-6">
@@ -87,6 +121,35 @@ const PropertyAddForm = () => {
                 placeholder="Zipcode"
               />
             </div>
+            
+            <div className="mt-4">
+          <input
+            type="checkbox"
+            id="use_current_location"
+            checked={useCurrentLocation}
+            onChange={handleLocationChange}
+          />
+          <label htmlFor="use_current_location" className="ml-2 mb-4">
+            Use my current location
+          </label>
+        </div>
+
+        {useCurrentLocation && (
+          <div>
+            <input
+              type="hidden"
+              id="latitude"
+              name="location.latitude"
+              value={latitude}
+            />
+            <input
+              type="hidden"
+              id="longitude"
+              name="location.longitude"
+              value={longitude}
+            />
+          </div>
+        )}
 
             <div className="mb-4 flex flex-wrap">
               <div className="w-full sm:w-1/3 pr-2">
@@ -96,6 +159,7 @@ const PropertyAddForm = () => {
                 <input
                   type="number"
                   id="beds"
+                  min="0"
                   name="beds"
                   className="border rounded w-full py-2 px-3"
                   required
@@ -108,6 +172,7 @@ const PropertyAddForm = () => {
                 <input
                   type="number"
                   id="baths"
+                  min="0"
                   name="baths"
                   className="border rounded w-full py-2 px-3"
                   required
@@ -122,6 +187,7 @@ const PropertyAddForm = () => {
                 <input
                   type="number"
                   id="square_feet"
+                  min="0"
                   name="square_feet"
                   className="border rounded w-full py-2 px-3"
                   required
@@ -303,6 +369,7 @@ const PropertyAddForm = () => {
                   <input
                     type="number"
                     id="weekly_rate"
+                    min="0"
                     name="rates.weekly"
                     className="border rounded w-full py-2 px-3"
                   />
@@ -312,6 +379,7 @@ const PropertyAddForm = () => {
                   <input
                     type="number"
                     id="monthly_rate"
+                    min="0"
                     name="rates.monthly"
                     className="border rounded w-full py-2 px-3"
                   />
@@ -321,7 +389,19 @@ const PropertyAddForm = () => {
                   <input
                     type="number"
                     id="nightly_rate"
+                    min="0"
                     name="rates.nightly"
+                    className="border rounded w-full py-2 px-3"
+                  />
+                </div>
+
+                <div className="flex items-center">
+                  <label htmlFor="nightly_rate" className="mr-2">Hourly</label>
+                  <input
+                    type="number"
+                    id="hourly_rate"
+                    min="0"
+                    name="rates.hourly"
                     className="border rounded w-full py-2 px-3"
                   />
                 </div>
@@ -369,6 +449,7 @@ const PropertyAddForm = () => {
                 name="seller_info.phone"
                 className="border rounded w-full py-2 px-3"
                 placeholder="Phone"
+                required
               />
             </div>
 

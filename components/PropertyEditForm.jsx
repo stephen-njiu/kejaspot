@@ -1,15 +1,33 @@
-import React from 'react'
+'use client'
 import updateProperty from '@/app/actions/updateProperty'
+import Spinner from './Spinner'
+import React from 'react'
+import { useTransition } from 'react'
 
 const PropertyEditForm = ({ property }) => {
+
+  const [isPending, startTranstion] = useTransition()
   const updatePropertyById = updateProperty.bind(null, property._id)
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+
+    startTranstion(() => {
+      updatePropertyById(formData)
+    })
+  }
 
   return (
-    <form action={updatePropertyById}>
+    <form onSubmit={handleSubmit}>
                 <h2 className="text-3xl text-center font-semibold mb-6">
                   Edit Property
                 </h2>
+                {isPending && (
+                  <div className="flex justify-center-m-4">
+                    <Spinner />
+                  </div>
+                )}
     
                 <div className="mb-4">
                   <label htmlFor="type" className="block text-gray-700 font-bold mb-2"
@@ -332,6 +350,7 @@ const PropertyEditForm = ({ property }) => {
                       <input
                         type="number"
                         id="weekly_rate"
+                        min="0"
                         name="rates.weekly"
                         className="border rounded w-full py-2 px-3"
                         defaultValue={property.rates.weekly}
@@ -352,9 +371,21 @@ const PropertyEditForm = ({ property }) => {
                       <input
                         type="number"
                         id="nightly_rate"
+                        min="0"
                         name="rates.nightly"
                         className="border rounded w-full py-2 px-3"
                         defaultValue={property.rates.nightly}
+                      />
+                    </div>
+                    <div className="flex items-center">
+                      <label htmlFor="hourly_rate" className="mr-2">Hourly</label>
+                      <input
+                        type="number"
+                        id="hourly_rate"
+                        min="0"
+                        name="rates.hourly"
+                        className="border rounded w-full py-2 px-3"
+                        defaultValue={property.rates.hourly}
                       />
                     </div>
                   </div>

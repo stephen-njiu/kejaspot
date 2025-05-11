@@ -25,6 +25,14 @@ const PropertyMap = ({ property }) => {
   useEffect(() => {
     (async () => {
       try {
+        const dbLat = property?.coords?.latitude;
+      const dbLng = property?.coords?.longitude;
+
+      if (dbLat && dbLng) {
+        // Use stored coordinates from DB
+        setLat(parseFloat(dbLat));
+        setLng(parseFloat(dbLng));
+      } else {
         const address = [
           property?.location?.street,
           property?.location?.city,
@@ -37,9 +45,9 @@ const PropertyMap = ({ property }) => {
 
         const { lat, lng } = await fetchCoordsFromMapbox(address);
         setLat(lat);
-        setLng(lng);
+        setLng(lng); }
       } catch (err) {
-        console.error('Mapbox geocoding failed:', err);
+        // console.error('Mapbox geocoding failed:', err);
         // Fallback: Nairobi
         setLat(-1.286389);
         setLng(36.817223);
@@ -49,7 +57,7 @@ const PropertyMap = ({ property }) => {
     })();
   }, [property]);
 
-  if (loading) {<Spinner />}
+  if (loading) return <Spinner />
 
   return (
     <div className="w-full h-[500px]">

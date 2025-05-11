@@ -24,7 +24,10 @@ const PropertySchema = new Schema (
             state:String,
             zipcode:String,
         },
-
+        cords: {
+            longitude:String,
+            latitude:String,
+        },
         beds : {
             type: Number,
             required:true,

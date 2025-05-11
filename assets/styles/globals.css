@@ -2,11 +2,11 @@
 
 .gradient-background {
     background-image:
-    radial-gradient(circle at 10% 20%, rgba(236, 116, 176, 0.6) 10%, transparent 45%),
-    radial-gradient(circle at 30% 40%, rgba(138, 32, 236, 0.45) 20%, transparent 50%),
-    radial-gradient(circle at 70% 60%, rgba(255, 182, 193, 0.4) 20%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(112, 157, 241, 0.3) 15%, transparent 45%);
-  background-color: #5023e0; /* Deep purple base for elegance */
+    radial-gradient(circle at 10% 20%, rgba(241, 44, 143, 0.6) 10%, transparent 45%),
+    radial-gradient(circle at 30% 40%, rgba(155, 64, 241, 0.45) 20%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(240, 238, 133, 0.4) 20%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(62, 224, 211, 0.3) 15%, transparent 45%);
+  background-color: #5527eb; /* Deep purple base for elegance */
 }
 
 .gradient-button {
@@ -17,7 +17,7 @@
 }
 
 .modern-button {
-  background: linear-gradient(135deg, #d8b4fe, #ec4899, #fef08a);
+  background: linear-gradient(135deg, #d160e7, #b103e6, #2653e6);
 }
 
 @keyframes gradient-move {
@@ -34,7 +34,7 @@
 
 .animated-gradient-btn {
   @apply px-5 py-2 rounded-xl text-white font-semibold shadow-lg transition duration-300 ease-in-out;
-  background-image: linear-gradient(270deg, #bd15cc, #5316e2, #f1b307);
+  background-image: linear-gradient(270deg, #db0bee, #5316e2, #f10788);
   background-size: 600% 600%;
   animation: gradient-move 5s ease infinite;
 }
