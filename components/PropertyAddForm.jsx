@@ -454,19 +454,48 @@ const PropertyAddForm = () => {
             </div>
 
             <div className="mb-4">
-              <label htmlFor="images" className="block text-gray-700 font-bold mb-2"
-                >Images (Select up to 4 images)</label
+              <label htmlFor="images" className="block text-gray-700 font-bold mb-2 cursor-pointer"
+                >Images (Max 5Mib)</label
               >
               <input
                 type="file"
                 id="images"
                 name="images"
-                className="border rounded w-full py-2 px-3 text-red-500"
+                className="border rounded w-full py-2 px-3 text-gray-500 cursor-pointer"
                 accept="image/*"
                 multiple
                 required
               />
             </div>
+
+            {/* <div className="mb-4">
+              <label
+                htmlFor="images"
+                className="block text-gray-700 font-bold mb-2 cursor-pointer"
+              >
+                Images (Max 5Mib)
+              </label>
+
+              <input
+                type="file"
+                id="images"
+                name="images"
+                className="hidden"
+                accept="image/*"
+                multiple
+                required
+              />
+
+              Custom Styled Button 
+              <button
+                type="button"
+                className="mt-2 py-2 px-4 bg-blue-500 text-white rounded-md cursor-pointer hover:bg-blue-700"
+                onClick={() => document.getElementById('images').click()}
+              >
+                Choose Images
+              </button>
+            </div> */}
+
 
             <div>
               <button

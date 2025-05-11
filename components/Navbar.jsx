@@ -68,7 +68,7 @@ const Navbar = () => {
             className="flex flex-1 items-center justify-center md:items-stretch md:justify-start"
             >
             {/* <!-- Logo --> */}
-            <Link className="flex flex-shrink-0 items-center" href="/">
+            <Link className="flex flex-shrink-0 items-center cursor-pointer" href="/">
                 <Image
                 className="h-10 w-auto"
                 src={logo}
@@ -84,18 +84,18 @@ const Navbar = () => {
                 <div className="flex space-x-2">
                 <Link
                     href="/"
-                    className={`${pathName === '/'? 'modern-button':''} text-white hover:bg-purple-700 hover:text-white rounded-md px-3 py-2`}
+                    className={`${pathName === '/'? 'modern-button':''} text-white hover:bg-purple-700 hover:text-white rounded-md px-3 py-2 cursor-pointer`}
                     >Home
                 </Link>
                 <Link
                     href="/properties"
-                    className={`${pathName === '/properties'? 'modern-button':''} text-white hover:bg-purple-700 hover:text-white rounded-md px-3 py-2`}
+                    className={`${pathName === '/properties'? 'modern-button':''} text-white hover:bg-purple-700 hover:text-white rounded-md px-3 py-2 cursor-pointer`}
                     >Properties
                 </Link>
                 {session && (
                 <Link
                     href="/properties/add"
-                    className={`${pathName === '/properties/add'? 'modern-button':''} text-white hover:bg-purple-700 hover:text-white rounded-md px-3 py-2`}
+                    className={`${pathName === '/properties/add'? 'modern-button':''} text-white hover:bg-purple-700 hover:text-white rounded-md px-3 py-2 cursor-pointer`}
                     >Add Property
                 </Link>
                 )}
@@ -112,7 +112,7 @@ const Navbar = () => {
                         <button
                             key={index}
                             onClick={() => signIn(provider.id)}
-                            className="flex items-center text-white modern-button hover:bg-purple-500 hover:text-white rounded-md px-3 py-2"
+                            className="flex items-center text-white modern-button hover:bg-purple-500 hover:text-white rounded-md px-3 py-2 cursor-pointer"
                             >
                             <FaGoogle className='text-white mr-2' />
                             <span>Login/Register</span>
@@ -130,12 +130,12 @@ const Navbar = () => {
             <Link href="/messages" className="relative group">
                 <button
                 type="button"
-                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
                 >
                 <span className="absolute -inset-1.5"></span>
-                <span className="sr-only">View notifications</span>
+                <span className="sr-only cursor-pointer">View notifications</span>
                 <svg
-                    className="h-6 w-6"
+                    className="h-6 w-6 cursor-pointer"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
@@ -156,7 +156,7 @@ const Navbar = () => {
                 <div>
                 <button
                     type="button"
-                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                    className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
                     id="user-menu-button"
                     aria-expanded="false"
                     aria-haspopup="true"
@@ -186,7 +186,7 @@ const Navbar = () => {
                 >
                 <Link
                     href="/profile"
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-pink-300"
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-0"
@@ -195,7 +195,7 @@ const Navbar = () => {
                 </Link>
                 <Link
                     href="/properties/saved"
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-pink-300"
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-2"
@@ -203,13 +203,13 @@ const Navbar = () => {
                     >Saved Properties
                     </Link>
                 <button
-                    className="block px-4 py-2 text-sm text-gray-700"
+                    className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-pink-300"
                     role="menuitem"
                     tabIndex="-1"
                     id="user-menu-item-2"
                     onClick={() => {
                         setIsProfileMenuOpen(false)
-                        signOut();
+                        signOut({ callbackUrl: '/' });
                     }}
                 >
                     Sign Out
@@ -228,7 +228,7 @@ const Navbar = () => {
         <div className="space-y-1 px-2 pb-3 pt-2">
             <Link
             href="/"
-            className={`${pathName === '/'? 'modern-button': ''} text-white block rounded-md px-3 py-2 text-base font-medium`}
+            className={`${pathName === '/'? 'modern-button': ''} text-white block rounded-md px-3 py-2 text-base font-medium cursor-pointer`}
             onClick={() => setIsMobileMenuOpen(false)}
             >Home
             </Link>
@@ -244,7 +244,7 @@ const Navbar = () => {
             <Link
             href="/properties/add"
             onClick={() => setIsMobileMenuOpen(false)}
-            className={`${pathName === '/properties/add'? 'modern-button': ''} text-white block rounded-md px-3 py-2 text-base font-medium`}
+            className={`${pathName === '/properties/add'? 'modern-button': ''} text-white block rounded-md px-3 py-2 text-base font-medium cursor-pointer`}
             >Add Property
             </Link>
             )}
@@ -254,7 +254,7 @@ const Navbar = () => {
                 <button
                 key={index}
                 onClick={() => signIn(provider.id)}
-                className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5"
+                className="flex items-center text-white bg-gray-700 hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 my-5 cursor-pointer"
                 >
                 <FaGoogle className='text-white mr-2' />
                 <span>Login/Register</span>
