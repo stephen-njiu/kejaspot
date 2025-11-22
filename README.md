@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# KejaSpot 🏠
 
-## Getting Started
+**KejaSpot** is a modern, full-stack rental marketplace tailored for Kenya. Find or list apartments, houses, vacation stays, or hourly spots in Nairobi, Mombasa, Kisumu, Nakuru, and beyond — with flexible pricing for hourly, daily, weekly, or monthly rentals.
 
-First, run the development server:
+🔗 **Live Demo**: https://kejaspot.vercel.app
 
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-black?style=flat&logo=vercel)](https://kejaspot.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2.5-000000?style=flat&logo=next.js)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.2.2-blue?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat&logo=tailwind-css)](https://tailwindcss.com/)
+
+## ✨ Features
+
+- Browse & filter listings by location, price, and rental duration
+- Detailed property pages with images, amenities, and contact info
+- Add and manage your own listings (hourly to monthly pricing)
+- Secure Google OAuth login via NextAuth.js
+- Image uploads powered by **Cloudinary**
+- Bookmark/favorite properties
+- Fully responsive, mobile-first design
+- Fast search and category filters
+- SEO-friendly with Next.js server-side rendering
+
+## 🛠 Tech Stack
+
+| Layer            | Technology                          |
+|------------------|-------------------------------------|
+| Framework        | Next.js 14 (App Router) + TypeScript |
+| Styling          | Tailwind CSS                        |
+| Database         | MongoDB + Mongoose                  |
+| Authentication   | NextAuth.js (Google Provider)       |
+| Image Hosting    | Cloudinary                          |
+| Deployment       | Vercel                              |
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js ≥ 18
+- MongoDB (local or Atlas)
+- Google OAuth credentials
+- Cloudinary account
+
+### 1. Clone & Install
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/stephen-njiu/kejaspot.git
+cd kejaspot
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Environment Variables
+Create `.env.local` in the root:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```env
+# MongoDB
+MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/kejaspot
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# NextAuth
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_strong_secret_here
 
-## Learn More
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
 
-To learn more about Next.js, take a look at the following resources:
+# Cloudinary
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Run Development Server
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+## 📦 Available Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm run dev     # Start development server
+npm run build   # Build for production
+npm run start   # Run production build
+npm run lint    # Run ESLint
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🚀 Deploy on Vercel
+
+One-click deploy (all env vars auto-detected):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/stephen-njiu/kejaspot)
+
+## 🤝 Contributing
+
+Contributions are welcome!  
+Open issues or submit pull requests to help grow KejaSpot.
+
+1. Fork the repo
+2. Create your branch (`git checkout -b feature/cool-stuff`)
+3. Commit (`git commit -m 'Add cool stuff'`)
+4. Push & open a Pull Request
+
+## 📄 License
+
+MIT License – see [LICENSE](LICENSE) for details.
+
+## 👨‍💻 Author
+
+**Stephen Njiu**  
+GitHub: [@stephen-njiu](https://github.com/stephen-njiu)
+
+---
+
+**KejaSpot – Warmth & Style in Every Stay, in Every Keja.**  
+Built with 💙 for Kenya 🇰🇪
+```
